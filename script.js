@@ -1,9 +1,84 @@
+//Creating deck of cards as class
+class Card {
+  constructor(cardSuit, cardValue, cardImage) {
+    this.cardSuit = cardSuit
+    this.cardValue = cardValue
+    this.cardImage = cardImage
+  }
+}
+
+const allCards = [
+  new Card('clubs', 'Ace', 'clubs/clubs-A.svg'),
+  new Card('clubs', 2, 'clubs/clubs-r02.svg'),
+  new Card('clubs', 3, 'clubs/clubs-r03.svg'),
+  new Card('clubs', 4, 'clubs/clubs-r04.svg'),
+  new Card('clubs', 5, 'clubs/clubs-r05.svg'),
+  new Card('clubs', 6, 'clubs/clubs-r06.svg'),
+  new Card('clubs', 7, 'clubs/clubs-r07.svg'),
+  new Card('clubs', 8, 'clubs/clubs-r08.svg'),
+  new Card('clubs', 9, 'clubs/clubs-r09.svg'),
+  new Card('clubs', 10, 'clubs/clubs-r10.svg'),
+  new Card('clubs', 'Jack', 'clubs/clubs-J.svg'),
+  new Card('clubs', 'Queen', 'clubs/clubs-Q.svg'),
+  new Card('clubs', 'King', 'clubs/clubs-K.svg'),
+  new Card('spades', 'Ace', 'spades/spades-A.svg'),
+  new Card('spades', 2, 'spades/spades-r02.svg'),
+  new Card('spades', 3, 'spades/spades-r03.svg'),
+  new Card('spades', 4, 'spades/spades-r04.svg'),
+  new Card('spades', 5, 'spades/spades-r05.svg'),
+  new Card('spades', 6, 'spades/spades-r06.svg'),
+  new Card('spades', 7, 'spades/spades-r07.svg'),
+  new Card('spades', 8, 'spades/spades-r08.svg'),
+  new Card('spades', 9, 'spades/spades-r09.svg'),
+  new Card('spades', 10, 'spades/spades-r10.svg'),
+  new Card('spades', 'Jack', 'spades/spades-J.svg'),
+  new Card('spades', 'Queen', 'spades/spades-Q.svg'),
+  new Card('spades', 'King', 'spades/spades-K.svg'),
+  new Card('hearts', 'Ace', 'hearts/hearts-A.svg'),
+  new Card('hearts', 2, 'hearts/hearts-r02.svg'),
+  new Card('hearts', 3, 'hearts/hearts-r03.svg'),
+  new Card('hearts', 4, 'hearts/hearts-r04.svg'),
+  new Card('hearts', 5, 'hearts/hearts-r05.svg'),
+  new Card('hearts', 6, 'hearts/hearts-r06.svg'),
+  new Card('hearts', 7, 'hearts/hearts-r07.svg'),
+  new Card('hearts', 8, 'hearts/hearts-r08.svg'),
+  new Card('hearts', 9, 'hearts/hearts-r09.svg'),
+  new Card('hearts', 10, 'hearts/hearts-r10.svg'),
+  new Card('hearts', 'Jack', 'hearts/hearts-J.svg'),
+  new Card('hearts', 'Queen', 'hearts/hearts-Q.svg'),
+  new Card('hearts', 'King', 'hearts/hearts-K.svg'),
+  new Card('diamonds', 'Ace', 'diamonds/diamonds-A.svg'),
+  new Card('diamonds', 2, 'diamonds/diamonds-r02.svg'),
+  new Card('diamonds', 3, 'diamonds/diamonds-r03.svg'),
+  new Card('diamonds', 4, 'diamonds/diamonds-r04.svg'),
+  new Card('diamonds', 5, 'diamonds/diamonds-r05.svg'),
+  new Card('diamonds', 6, 'diamonds/diamonds-r06.svg'),
+  new Card('diamonds', 7, 'diamonds/diamonds-r07.svg'),
+  new Card('diamonds', 8, 'diamonds/diamonds-r08.svg'),
+  new Card('diamonds', 9, 'diamonds/diamonds-r09.svg'),
+  new Card('diamonds', 10, 'diamonds/diamonds-r10.svg'),
+  new Card('diamonds', 'Jack', 'diamonds/diamonds-J.svg'),
+  new Card('diamonds', 'Queen', 'diamonds/diamonds-Q.svg'),
+  new Card('diamonds', 'King', 'diamonds/diamonds-K.svg')
+]
+
+//Functions
 //Hit Me and stay button functions
 const hitButton = document.querySelector('.hitButton')
 const stayButton = document.querySelector('.stayButton')
+const displayCardTotal = document.querySelector('.player-total')
+const playerCardImage = document.querySelector('.player-img')
+
+const drawCard = (array) => {
+  let drawCardResult = Math.floor(Math.random() * array.length)
+  console.log(drawCardResult, array[drawCardResult])
+  displayCardTotal.innerText = array[drawCardResult].cardValue
+  playerCardImage.innerHTML = `<img src = './card-deck/images/${array[drawCardResult].cardImage}'></img>`
+}
 
 const hitResponse = () => {
-  console.log('You drew another card!')
+  //Should pick a card from the deck at random and its image should appear
+  drawCard(allCards)
 }
 
 const stayResponse = () => {
@@ -11,75 +86,3 @@ const stayResponse = () => {
 }
 hitButton.addEventListener('click', hitResponse)
 stayButton.addEventListener('click', stayResponse)
-
-//Creating deck of cards as class
-class Card {
-  constructor(cardSuit, cardValue) {
-    this.cardSuit = cardSuit
-    this.cardValue = cardValue
-  }
-}
-
-const clubsArray = [
-  new Card('clubs', 'Ace'),
-  new Card('clubs', 2),
-  new Card('clubs', 3),
-  new Card('clubs', 4),
-  new Card('clubs', 5),
-  new Card('clubs', 6),
-  new Card('clubs', 7),
-  new Card('clubs', 8),
-  new Card('clubs', 9),
-  new Card('clubs', 10),
-  new Card('clubs', 'Jack'),
-  new Card('clubs', 'Queen'),
-  new Card('clubs', 'King')
-]
-const spadesArray = [
-  new Card('spades', 'Ace'),
-  new Card('spades', 2),
-  new Card('spades', 3),
-  new Card('spades', 4),
-  new Card('spades', 5),
-  new Card('spades', 6),
-  new Card('spades', 7),
-  new Card('spades', 8),
-  new Card('spades', 9),
-  new Card('spades', 10),
-  new Card('spades', 'Jack'),
-  new Card('spades', 'Queen'),
-  new Card('spades', 'King')
-]
-const heartsArray = [
-  new Card('hearts', 'Ace'),
-  new Card('hearts', 2),
-  new Card('hearts', 3),
-  new Card('hearts', 4),
-  new Card('hearts', 5),
-  new Card('hearts', 6),
-  new Card('hearts', 7),
-  new Card('hearts', 8),
-  new Card('hearts', 9),
-  new Card('hearts', 10),
-  new Card('hearts', 'Jack'),
-  new Card('hearts', 'Queen'),
-  new Card('hearts', 'King')
-]
-const diamondsArray = [
-  new Card('diamonds', 'Ace'),
-  new Card('diamonds', 2),
-  new Card('diamonds', 3),
-  new Card('diamonds', 4),
-  new Card('diamonds', 5),
-  new Card('diamonds', 6),
-  new Card('diamonds', 7),
-  new Card('diamonds', 8),
-  new Card('diamonds', 9),
-  new Card('diamonds', 10),
-  new Card('diamonds', 'Jack'),
-  new Card('diamonds', 'Queen'),
-  new Card('diamonds', 'King')
-]
-
-const allCards = [clubsArray, spadesArray, heartsArray, diamondsArray]
-console.log(allCards)
