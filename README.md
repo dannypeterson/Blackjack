@@ -32,9 +32,9 @@ This in-browser game of blackjack was created to provide practice gambling befor
 
 ### **_Screenshots_**
 
-#### Playing Board
+#### DISCLAIMER: Gambling addiction is very real and very serious and affects the lives of many. I however just have a messed up sense of humor.
 
-![Image](https://shockedsockets.com/wp-content/uploads/2019/02/grandpa-eats-paint-by-accident.png)
+![Image](https://starecat.com/content/wp-content/uploads/person-who-keeps-on-gambling-vs-person-who-stopped-gambling-digging-for-diamonds.jpg)
 
 #### Winning!
 
