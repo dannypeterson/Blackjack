@@ -62,27 +62,47 @@ const allCards = [
   new Card('diamonds', 'King', 'diamonds/diamonds-K.svg')
 ]
 
-//Functions
-//Hit Me and stay button functions
+//Global variables
 const hitButton = document.querySelector('.hitButton')
 const stayButton = document.querySelector('.stayButton')
 const displayCardTotal = document.querySelector('.player-total')
-const playerCardImage = document.querySelector('.player-img')
+const playerCardImage1 = document.querySelector('.player-img1')
+const playerCardImage2 = document.querySelector('.player-img2')
+const dealerCardImage1 = document.querySelector('.dealer-img1')
+const dealerCardImage2 = document.querySelector('.dealer-img2')
+const dealerTotal = document.querySelector('.dealer-total')
+let drawCardResult = ''
 
+//Functions
+
+//Chooses a card at random
 const drawCard = (array) => {
-  let drawCardResult = Math.floor(Math.random() * array.length)
+  drawCardResult = Math.floor(Math.random() * array.length)
   console.log(drawCardResult, array[drawCardResult])
-  displayCardTotal.innerText = array[drawCardResult].cardValue
-  playerCardImage.innerHTML = `<img src = './card-deck/images/${array[drawCardResult].cardImage}'></img>`
 }
 
-const hitResponse = () => {
-  //Should pick a card from the deck at random and its image should appear
-  drawCard(allCards)
-}
+//Hit Me button event handler
+const hitResponse = () => {}
+hitButton.addEventListener('click', hitResponse)
 
+//Stay button event handler
 const stayResponse = () => {
   console.log('You decided to stay')
 }
-hitButton.addEventListener('click', hitResponse)
 stayButton.addEventListener('click', stayResponse)
+
+const startGame = () => {
+  //Dealer gets first card
+  drawCard(allCards)
+  dealerTotal.innerText = allCards[drawCardResult].cardValue
+  dealerCardImage1.innerHTML = `<img src = './card-deck/images/${allCards[drawCardResult].cardImage}'></img>`
+
+  //Player gets 2 cards
+  drawCard(allCards)
+  displayCardTotal.innerText = allCards[drawCardResult].cardValue
+  playerCardImage1.innerHTML = `<img src = './card-deck/images/${allCards[drawCardResult].cardImage}'></img>`
+  drawCard(allCards)
+  displayCardTotal.innerText = allCards[drawCardResult].cardValue
+  playerCardImage2.innerHTML = `<img src = './card-deck/images/${allCards[drawCardResult].cardImage}'></img>`
+}
+startGame()
