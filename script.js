@@ -63,19 +63,23 @@ const allCards = [
 ]
 
 //Global variables
-let cardCounter = 0
+let playerCounter = 0
+let dealerCounter = 0
 let drawCardResult = ''
+let resultsMessage = ''
 
 //Query Selectors
 const hitButton = document.querySelector('.hitButton')
 const stayButton = document.querySelector('.stayButton')
-const displayCardTotal = document.querySelector('.player-total')
 const playerCardImage1 = document.querySelector('.player-img1')
 const playerCardImage2 = document.querySelector('.player-img2')
 const dealerCardImage1 = document.querySelector('.dealer-img1')
 const dealerCardImage2 = document.querySelector('.dealer-img2')
+const playerTotal = document.querySelector('.player-total')
 const dealerTotal = document.querySelector('.dealer-total')
 const playerCards = document.querySelector('.player-cards')
+const dealerCards = document.querySelector('.dealer-cards')
+const resultsDisplay = document.querySelector('body')
 
 //Functions
 
@@ -84,51 +88,109 @@ const drawCard = (array) => {
   drawCardResult = Math.floor(Math.random() * array.length)
 }
 
-//Hit Me button event handler
+//Reveals dealers second hand after busting or staying, draws cards until >16
+const revealDealerHand = () => {
+  drawCard(allCards)
+  countingDealerCards(allCards)
+  dealerTotal.innerText = dealerCounter
+  dealerCardImage2.innerHTML = `<img src = './card-deck/images/${allCards[drawCardResult].cardImage}'></img>`
+
+  if (dealerCounter < 16) {
+    drawCard(allCards)
+    countingDealerCards(allCards)
+    dealerTotal.innerText = dealerCounter
+    let newDealerCard = document.createElement('div')
+    dealerCards.append(newDealerCard)
+    newDealerCard.innerHTML = `<img src = './card-deck/images/${allCards[drawCardResult].cardImage}'></img>`
+  }
+}
+
+//Results function
+const displayResults = () => {
+  let results = document.createElement('header')
+  results.classList.add('results')
+  resultsDisplay.append(results)
+  if (playerCounter > 21) {
+    results.innerText = 'Busted! You lose this round.'
+  } else if (dealerCounter > 21) {
+    results.innerText = 'You win! Dealer busted.'
+  } else if (playerCounter === dealerCounter) {
+    results.innerText = 'Its a tie!'
+  } else if (playerCounter === 21) {
+    results.innerText = 'Blackjack! You win this round'
+  } else if (dealerCounter === 21) {
+    results.innerText = 'Dealer has Blackjack. You lose this round'
+  } else if (playerCounter > dealerCounter) {
+    results.innerText = 'You win!'
+  } else if (dealerCounter > playerCounter) {
+    results.innerText = 'You lose!'
+  }
+}
+
+//Hit button event draws random card
 const hitResponse = () => {
-  if (cardCounter < 21) {
+  if (playerCounter < 21) {
     let newDiv = document.createElement('div')
     playerCards.append(newDiv)
     drawCard(allCards)
     newDiv.innerHTML = `<img src = './card-deck/images/${allCards[drawCardResult].cardImage}'></img>`
-    countingCards(allCards)
-    displayCardTotal.innerText = cardCounter
-    if (cardCounter > 21) {
+    countingPlayerCards(allCards)
+    playerTotal.innerText = playerCounter
+    if (playerCounter > 21) {
       console.log('You busted!')
     }
   }
 }
 hitButton.addEventListener('click', hitResponse)
 
-//Stay button event handler
-const stayResponse = () => {
-  console.log('You decided to stay')
-}
-stayButton.addEventListener('click', stayResponse)
-
-const countingCards = (element) => {
+//Totals up player and dealers cards
+const countingPlayerCards = (element) => {
   if (typeof element[drawCardResult].cardValue === 'number') {
-    cardCounter += element[drawCardResult].cardValue
+    playerCounter += element[drawCardResult].cardValue
   } else if (element[drawCardResult].cardValue === 'Ace') {
-    cardCounter += 1
+    playerCounter += 1
   } else {
-    cardCounter += 10
+    playerCounter += 10
   }
 }
+const countingDealerCards = (element) => {
+  if (typeof element[drawCardResult].cardValue === 'number') {
+    dealerCounter += element[drawCardResult].cardValue
+  } else if (element[drawCardResult].cardValue === 'Ace') {
+    dealerCounter += 1
+  } else {
+    dealerCounter += 10
+  }
+}
+
+//Start Game function sets up round
 const startGame = () => {
   //Dealer gets first card
   drawCard(allCards)
+  countingDealerCards(allCards)
+
   dealerCardImage1.innerHTML = `<img src = './card-deck/images/${allCards[drawCardResult].cardImage}'></img>`
-  dealerTotal.innerText = allCards[drawCardResult].cardValue
 
   //Player gets 2 cards
   drawCard(allCards)
-  countingCards(allCards)
-  displayCardTotal.innerText = cardCounter
+  countingPlayerCards(allCards)
+  playerTotal.innerText = playerCounter
   playerCardImage1.innerHTML = `<img src = './card-deck/images/${allCards[drawCardResult].cardImage}'></img>`
   drawCard(allCards)
-  countingCards(allCards)
-  displayCardTotal.innerText = cardCounter
+  countingPlayerCards(allCards)
+  playerTotal.innerText = playerCounter
   playerCardImage2.innerHTML = `<img src = './card-deck/images/${allCards[drawCardResult].cardImage}'></img>`
+
+  //Player chooses to hit or stay via buttons
+  //If player busts or chooses to stay then dealers second hand is revealed
 }
+
+//Stay button event handler
+const stayResponse = () => {
+  console.log('You decided to stay')
+  revealDealerHand(allCards)
+  displayResults()
+}
+stayButton.addEventListener('click', stayResponse)
+
 startGame()
