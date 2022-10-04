@@ -7,8 +7,11 @@ body {
   flex-wrap: wrap;
   color: aliceblue;
 }
-.hitButton, .stayButton {
+button {
+  cursor: pointer;
   height: 50px;
   width: 100px;
   margin: 10px;
 }
+
+
