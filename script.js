@@ -63,6 +63,10 @@ const allCards = [
 ]
 
 //Global variables
+let cardCounter = 0
+let drawCardResult = ''
+
+//Query Selectors
 const hitButton = document.querySelector('.hitButton')
 const stayButton = document.querySelector('.stayButton')
 const displayCardTotal = document.querySelector('.player-total')
@@ -71,18 +75,29 @@ const playerCardImage2 = document.querySelector('.player-img2')
 const dealerCardImage1 = document.querySelector('.dealer-img1')
 const dealerCardImage2 = document.querySelector('.dealer-img2')
 const dealerTotal = document.querySelector('.dealer-total')
-let drawCardResult = ''
+const playerCards = document.querySelector('.player-cards')
 
 //Functions
 
 //Chooses a card at random
 const drawCard = (array) => {
   drawCardResult = Math.floor(Math.random() * array.length)
-  console.log(drawCardResult, array[drawCardResult])
 }
 
 //Hit Me button event handler
-const hitResponse = () => {}
+const hitResponse = () => {
+  if (cardCounter < 21) {
+    let newDiv = document.createElement('div')
+    playerCards.append(newDiv)
+    drawCard(allCards)
+    newDiv.innerHTML = `<img src = './card-deck/images/${allCards[drawCardResult].cardImage}'></img>`
+    countingCards(allCards)
+    displayCardTotal.innerText = cardCounter
+    if (cardCounter > 21) {
+      console.log('You busted!')
+    }
+  }
+}
 hitButton.addEventListener('click', hitResponse)
 
 //Stay button event handler
@@ -91,18 +106,29 @@ const stayResponse = () => {
 }
 stayButton.addEventListener('click', stayResponse)
 
+const countingCards = (element) => {
+  if (typeof element[drawCardResult].cardValue === 'number') {
+    cardCounter += element[drawCardResult].cardValue
+  } else if (element[drawCardResult].cardValue === 'Ace') {
+    cardCounter += 1
+  } else {
+    cardCounter += 10
+  }
+}
 const startGame = () => {
   //Dealer gets first card
   drawCard(allCards)
-  dealerTotal.innerText = allCards[drawCardResult].cardValue
   dealerCardImage1.innerHTML = `<img src = './card-deck/images/${allCards[drawCardResult].cardImage}'></img>`
+  dealerTotal.innerText = allCards[drawCardResult].cardValue
 
   //Player gets 2 cards
   drawCard(allCards)
-  displayCardTotal.innerText = allCards[drawCardResult].cardValue
+  countingCards(allCards)
+  displayCardTotal.innerText = cardCounter
   playerCardImage1.innerHTML = `<img src = './card-deck/images/${allCards[drawCardResult].cardImage}'></img>`
   drawCard(allCards)
-  displayCardTotal.innerText = allCards[drawCardResult].cardValue
+  countingCards(allCards)
+  displayCardTotal.innerText = cardCounter
   playerCardImage2.innerHTML = `<img src = './card-deck/images/${allCards[drawCardResult].cardImage}'></img>`
 }
 startGame()
