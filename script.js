@@ -83,7 +83,8 @@ const playerTotal = document.querySelector('.player-total')
 const dealerTotal = document.querySelector('.dealer-total')
 const playerCards = document.querySelector('.player-cards')
 const dealerCards = document.querySelector('.dealer-cards')
-const resultsDisplay = document.querySelector('body')
+const resultsDisplay = document.querySelector('.results-display')
+const startButton = document.querySelector('.start')
 
 //DOM element creations
 let results = document.createElement('header')
@@ -101,7 +102,7 @@ const countPlayerCards = () => {
   if (allCards[drawCardResult].cardValue === 11) {
     playerAceCount = 1
   }
-  if (playerCounter > 21 && playerAceCount > 0) {
+  while (playerCounter > 21 && playerAceCount > 0) {
     playerCounter -= 10
     playerAceCount -= 1
   }
@@ -112,7 +113,7 @@ const countDealerCards = () => {
   if (allCards[drawCardResult].cardValue === 11) {
     dealerAceCount = 1
   }
-  if (dealerCounter > 21 && dealerAceCount > 0) {
+  while (dealerCounter > 21 && dealerAceCount > 0) {
     dealerCounter -= 10
     dealerAceCount -= 1
   }
@@ -120,20 +121,23 @@ const countDealerCards = () => {
 
 //Reveals dealers second hand after busting or staying, draws cards until >16
 const revealDealerHand = () => {
-  drawCard(allCards)
-  countDealerCards()
-  dealerTotal.innerText = dealerCounter
-  dealerCardImage2.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
-
-  while (dealerCounter < 16) {
+  const dealerSecondHand = () => {
     drawCard(allCards)
     countDealerCards()
     dealerTotal.innerText = dealerCounter
-    let newDealerCard = document.createElement('img')
-    newDealerCard.classList.add('new-card')
-    dealerCards.append(newDealerCard)
-    newDealerCard.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
+    dealerCardImage2.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
+    while (dealerCounter < 16) {
+      drawCard(allCards)
+      countDealerCards()
+      dealerTotal.innerText = dealerCounter
+      let newDealerCard = document.createElement('img')
+      newDealerCard.classList.add('new-card')
+      dealerCards.append(newDealerCard)
+      newDealerCard.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
+    }
   }
+  setTimeout(dealerSecondHand, 500)
+  setTimeout(displayResults, 600)
 }
 
 //Results function
@@ -161,56 +165,61 @@ const displayResults = () => {
 const hitResponse = () => {
   if (isGameLive === true && playerCounter < 21) {
     //Draws new card
-    drawCard(allCards)
-    countPlayerCards()
-    playerTotal.innerText = playerCounter
-    //Creates new img for new card
-    let newPlayerCard = document.createElement('img')
-    newPlayerCard.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
-    newPlayerCard.classList.add('new-card')
-    playerCards.append(newPlayerCard)
-
-    if (playerCounter >= 21) {
-      displayResults()
+    const hitCardTimer = () => {
+      drawCard(allCards)
+      countPlayerCards()
+      playerTotal.innerText = playerCounter
+      //Creates new img for new card
+      let newPlayerCard = document.createElement('img')
+      newPlayerCard.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
+      newPlayerCard.classList.add('new-card')
+      playerCards.append(newPlayerCard)
+      if (playerCounter >= 21) {
+        displayResults()
+      }
     }
+    setTimeout(hitCardTimer, 500)
   }
 }
 hitButton.addEventListener('click', hitResponse)
 
 //Start Game function sets up round
 const startGame = () => {
-  //Dealer gets first card
   isGameLive = true
-  drawCard(allCards)
-  countDealerCards()
-
-  dealerCardImage1.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
-
-  //Player gets firt card
-  drawCard(allCards)
-  countPlayerCards()
-  console.log(playerAceCount)
-  playerTotal.innerText = playerCounter
-  playerCardImage1.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
-
-  //Player gets second card
-  drawCard(allCards)
-  countPlayerCards()
-  console.log(playerAceCount)
-
-  playerTotal.innerText = playerCounter
-  playerCardImage2.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
-
-  if (playerCounter >= 21) {
-    displayResults()
+  //Dealer gets first card
+  const dealerFirstCard = () => {
+    drawCard(allCards)
+    countDealerCards()
+    dealerCardImage1.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
   }
+  //Player gets firt card
+  const playerFirstCard = () => {
+    drawCard(allCards)
+    countPlayerCards()
+    console.log(playerAceCount)
+    playerTotal.innerText = playerCounter
+    playerCardImage1.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
+  }
+  //Player gets second card
+  const playerSecondCard = () => {
+    drawCard(allCards)
+    countPlayerCards()
+    console.log(playerAceCount)
+    playerTotal.innerText = playerCounter
+    playerCardImage2.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
+    if (playerCounter >= 21) {
+      displayResults()
+    }
+  }
+  setTimeout(dealerFirstCard, 500)
+  setTimeout(playerFirstCard, 1000)
+  setTimeout(playerSecondCard, 1500)
 }
 
 //Stay button event handler
 const stayResponse = () => {
   if (isGameLive === true) {
-    revealDealerHand(allCards)
-    displayResults()
+    setTimeout(revealDealerHand(allCards), 500)
     isGameLive = false
   }
 }
@@ -226,8 +235,8 @@ const clearTable = () => {
   document.querySelectorAll('.new-card').forEach((element) => {
     element.remove()
   })
-  playerCardImage1.src = './card-deck/images/backs/blue.svg'
-  playerCardImage2.src = './card-deck/images/backs/blue.svg'
+  playerCardImage1.src = './card-deck/images/backs/red.svg'
+  playerCardImage2.src = './card-deck/images/backs/red.svg'
   dealerCardImage1.src = './card-deck/images/backs/blue.svg'
   dealerCardImage2.src = './card-deck/images/backs/blue.svg'
   startGame()

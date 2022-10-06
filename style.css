@@ -1,18 +1,50 @@
 body {
+  margin: 0 auto;
+  font-family: 'Peralta', cursive;
   background-color: green;
   display: flex;
   flex-direction: column;
   justify-content:center;
-  align-items:center;
+  align-items: center;
   flex-wrap: wrap;
   color: aliceblue;
+  margin: 0 20px;
+  width: 100vwß;
+  height: 100vh;
 }
 
 button {
+  font-family: 'Peralta', cursive;
+  color:antiquewhite;
   cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  background-color: darkgreen;
+  font-size: 16px;
   height: 50px;
   width: 100px;
   margin: 10px;
 }
 
+.start {
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  background-color: darkgreen;
+  font-size: 75px;
+  color: red;
+  margin: 20px;
+}
 
+.newRound {
+  width: 120px;
+}
+
+.picture {
+  width: 40vw;
+  height: 32vh;
+}
+
+.rules {
+  margin: 0 30px;
+}

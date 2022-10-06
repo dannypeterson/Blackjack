@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Peralta&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,20 +13,22 @@
 </head>
 <body>
   <div class = "all-cards">
-    <section>Dealer's Cards:</section>
-      <div class ='dealer-cards'>
+    <div class ='dealer-cards'>
+        <h2>Dealer's Cards: <span class = 'dealer-total'></span></h2>
         <img class = 'dealer-img1' src = './card-deck/images/backs/blue.svg'>
         <img class = 'dealer-img2' src = './card-deck/images/backs/blue.svg'>
       </div>
-    <header>Total: <span class = 'dealer-total'></span></header>
 
-    <section>Your Cards:</section>
       <div class ='player-cards'> 
-        <img class = 'player-img1' src = './card-deck/images/backs/blue.svg'>
-        <img class = 'player-img2' src = './card-deck/images/backs/blue.svg'>
+        <h2>Your Cards: <span class = 'player-total'></span></h2>
+        <img class = 'player-img1' src = './card-deck/images/backs/red.svg'>
+        <img class = 'player-img2' src = './card-deck/images/backs/red.svg'>
       </div>
-    <header>Total: <span class = 'player-total'></span></header>
   </div>
+
+<div>
+  <h2 class="results-display"></h2>
+</div>
 
   <div>
     <button class = 'hitButton'>Hit Me</button>
