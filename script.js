@@ -98,45 +98,36 @@ const drawCard = (array) => {
 //Totals up player and dealers cards
 const countPlayerCards = () => {
   playerCounter += allCards[drawCardResult].cardValue
+  if (allCards[drawCardResult].cardValue === 11) {
+    playerAceCount = 1
+  }
+  if (playerCounter > 21 && playerAceCount > 0) {
+    playerCounter -= 10
+    playerAceCount -= 1
+  }
 }
 
 const countDealerCards = () => {
   dealerCounter += allCards[drawCardResult].cardValue
-}
-
-//Check ace function will add 10 to counter if total < 11
-const checkPlayerAce = (card) => {
-  if (card[drawCardResult].cardValue === 1) {
-    return 1
-  } else return 0
-}
-
-const checkDealerAce = (card) => {
-  if (card[drawCardResult].cardValue === 1) {
-    return 1
-  } else return 0
-}
-
-const subtractAce = (playerSum, playerAceCount) => {
-  while (playerSum > 21 && playerAceCount > 0) {
-    playerSum -= 10
-    playerAceCount -= 1
+  if (allCards[drawCardResult].cardValue === 11) {
+    dealerAceCount = 1
   }
-  return playerSum
+  if (dealerCounter > 21 && dealerAceCount > 0) {
+    dealerCounter -= 10
+    dealerAceCount -= 1
+  }
 }
 
 //Reveals dealers second hand after busting or staying, draws cards until >16
 const revealDealerHand = () => {
   drawCard(allCards)
   countDealerCards()
-  checkDealerAce(allCards)
   dealerTotal.innerText = dealerCounter
   dealerCardImage2.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
 
   while (dealerCounter < 16) {
     drawCard(allCards)
     countDealerCards()
-    checkDealerAce(allCards)
     dealerTotal.innerText = dealerCounter
     let newDealerCard = document.createElement('img')
     newDealerCard.classList.add('new-card')
@@ -172,9 +163,8 @@ const hitResponse = () => {
     //Draws new card
     drawCard(allCards)
     countPlayerCards()
-    checkPlayerAce(allCards)
-    //Creates new img for new card
     playerTotal.innerText = playerCounter
+    //Creates new img for new card
     let newPlayerCard = document.createElement('img')
     newPlayerCard.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
     newPlayerCard.classList.add('new-card')
@@ -193,19 +183,21 @@ const startGame = () => {
   isGameLive = true
   drawCard(allCards)
   countDealerCards()
-  checkDealerAce(allCards)
+
   dealerCardImage1.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
 
   //Player gets firt card
   drawCard(allCards)
   countPlayerCards()
+  console.log(playerAceCount)
   playerTotal.innerText = playerCounter
   playerCardImage1.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
 
   //Player gets second card
   drawCard(allCards)
   countPlayerCards()
-  checkPlayerAce(allCards)
+  console.log(playerAceCount)
+
   playerTotal.innerText = playerCounter
   playerCardImage2.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
 
