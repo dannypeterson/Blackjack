@@ -1,17 +1,13 @@
 body {
   background-color: green;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content:center;
   align-items:center;
   flex-wrap: wrap;
   color: aliceblue;
 }
 
-/* .all-cards {
-  display: flex;
-  flex-direction: row; 
-} */
 button {
   cursor: pointer;
   height: 50px;

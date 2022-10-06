@@ -9,20 +9,27 @@
   <link rel="stylesheet" href = "style.css">
 </head>
 <body>
-    <section class ='dealer-cards'>Dealer's Cards:</section>
-      <div class = 'dealer-img1'><img src = './card-deck/images/backs/blue.svg'></div>
-      <div class = 'dealer-img2'><img src = './card-deck/images/backs/blue.svg'></div>
+  <div class = "all-cards">
+    <section>Dealer's Cards:</section>
+      <div class ='dealer-cards'>
+        <img class = 'dealer-img1' src = './card-deck/images/backs/blue.svg'>
+        <img class = 'dealer-img2' src = './card-deck/images/backs/blue.svg'>
+      </div>
     <header>Total: <span class = 'dealer-total'></span></header>
 
-    <section class ='player-cards'>Your Cards:</section>
-      <div class = 'player-img1'><img src = './card-deck/images/backs/blue.svg'></div>
-      <div class = 'player-img2'><img src = './card-deck/images/backs/blue.svg'></div>
+    <section>Your Cards:</section>
+      <div class ='player-cards'> 
+        <img class = 'player-img1' src = './card-deck/images/backs/blue.svg'>
+        <img class = 'player-img2' src = './card-deck/images/backs/blue.svg'>
+      </div>
     <header>Total: <span class = 'player-total'></span></header>
+  </div>
 
   <div>
     <button class = 'hitButton'>Hit Me</button>
     <button class = 'stayButton'>Stay</button>
     <button class = 'newRound'>New Round</button>
   </div>
+
 </body>
 </html>
