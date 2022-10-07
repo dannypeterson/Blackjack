@@ -97,63 +97,6 @@ const tieScore = document.querySelector('.tiescore')
 let results = document.createElement('header')
 
 //Functions
-
-//Chooses a card at random
-const drawCard = (array) => {
-  drawCardResult = Math.floor(Math.random() * array.length)
-}
-
-//Totals up player and dealers cards
-const countPlayerCards = () => {
-  playerCounter += allCards[drawCardResult].cardValue
-  if (allCards[drawCardResult].cardValue === 11) {
-    playerAceCount = 1
-  }
-  while (playerCounter > 21 && playerAceCount > 0) {
-    playerCounter -= 10
-    playerAceCount -= 1
-  }
-}
-
-const countDealerCards = () => {
-  dealerCounter += allCards[drawCardResult].cardValue
-  if (allCards[drawCardResult].cardValue === 11) {
-    dealerAceCount = 1
-  }
-  while (dealerCounter > 21 && dealerAceCount > 0) {
-    dealerCounter -= 10
-    dealerAceCount -= 1
-  }
-}
-
-//Reveals dealers second hand after busting or staying, draws cards until >16
-const revealDealerHand = () => {
-  const dealerSecondCard = () => {
-    drawCard(allCards)
-    countDealerCards()
-    dealerTotal.innerText = dealerCounter
-    dealerCardImage2.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
-
-    if (dealerCounter < 16) {
-      const dealerThirdCard = () => {
-        drawCard(allCards)
-        countDealerCards()
-        let newDealerCard = document.createElement('img')
-        newDealerCard.classList.add('new-card')
-        dealerCards.append(newDealerCard)
-        newDealerCard.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
-        dealerTotal.innerText = dealerCounter
-        if (dealerCounter > 16) {
-          clearInterval(interval)
-        }
-      }
-      const interval = setInterval(dealerThirdCard, 700)
-    }
-    displayResults()
-  }
-  setTimeout(dealerSecondCard, 300)
-}
-
 //Results function
 const displayResults = () => {
   results.classList.add('results')
@@ -187,6 +130,53 @@ const displayResults = () => {
     results.innerText = 'You lose!'
     dealerScoreboard++
     dScore.innerText = dealerScoreboard
+  }
+}
+//Chooses a card at random
+const drawCard = (array) => {
+  drawCardResult = Math.floor(Math.random() * array.length)
+}
+
+//Totals up player and dealers cards
+const countPlayerCards = () => {
+  playerCounter += allCards[drawCardResult].cardValue
+  if (allCards[drawCardResult].cardValue === 11) {
+    playerAceCount = 1
+  }
+  while (playerCounter > 21 && playerAceCount > 0) {
+    playerCounter -= 10
+    playerAceCount -= 1
+  }
+}
+
+const countDealerCards = () => {
+  dealerCounter += allCards[drawCardResult].cardValue
+  if (allCards[drawCardResult].cardValue === 11) {
+    dealerAceCount = 1
+  }
+  while (dealerCounter > 21 && dealerAceCount > 0) {
+    dealerCounter -= 10
+    dealerAceCount -= 1
+  }
+}
+
+//Reveals dealers second hand after staying, draws cards until >16
+const revealDealerHand = () => {
+  drawCard(allCards)
+  countDealerCards()
+  dealerTotal.innerText = dealerCounter
+  dealerCardImage2.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
+
+  if (dealerCounter < 16) {
+    drawCard(allCards)
+    countDealerCards()
+    let newDealerCard = document.createElement('img')
+    newDealerCard.classList.add('new-card')
+    dealerCards.append(newDealerCard), 500
+    newDealerCard.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
+    dealerTotal.innerText = dealerCounter
+
+    displayResults()
   }
 }
 
