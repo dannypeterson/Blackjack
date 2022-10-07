@@ -121,23 +121,20 @@ const countDealerCards = () => {
 
 //Reveals dealers second hand after busting or staying, draws cards until >16
 const revealDealerHand = () => {
-  const dealerSecondHand = () => {
+  drawCard(allCards)
+  countDealerCards()
+  dealerTotal.innerText = dealerCounter
+  dealerCardImage2.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
+  while (dealerCounter < 16) {
     drawCard(allCards)
     countDealerCards()
     dealerTotal.innerText = dealerCounter
-    dealerCardImage2.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
-    while (dealerCounter < 16) {
-      drawCard(allCards)
-      countDealerCards()
-      dealerTotal.innerText = dealerCounter
-      let newDealerCard = document.createElement('img')
-      newDealerCard.classList.add('new-card')
-      dealerCards.append(newDealerCard)
-      newDealerCard.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
-    }
+    let newDealerCard = document.createElement('img')
+    newDealerCard.classList.add('new-card')
+    dealerCards.append(newDealerCard)
+    newDealerCard.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
   }
-  setTimeout(dealerSecondHand, 500)
-  setTimeout(displayResults, 600)
+  displayResults()
 }
 
 //Results function
@@ -196,7 +193,6 @@ const startGame = () => {
   const playerFirstCard = () => {
     drawCard(allCards)
     countPlayerCards()
-    console.log(playerAceCount)
     playerTotal.innerText = playerCounter
     playerCardImage1.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
   }
@@ -204,7 +200,6 @@ const startGame = () => {
   const playerSecondCard = () => {
     drawCard(allCards)
     countPlayerCards()
-    console.log(playerAceCount)
     playerTotal.innerText = playerCounter
     playerCardImage2.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
     if (playerCounter >= 21) {
@@ -219,7 +214,7 @@ const startGame = () => {
 //Stay button event handler
 const stayResponse = () => {
   if (isGameLive === true) {
-    setTimeout(revealDealerHand(allCards), 500)
+    revealDealerHand(allCards)
     isGameLive = false
   }
 }
@@ -229,8 +224,8 @@ const clearTable = () => {
   playerAceCount = 0
   dealerAceCount = 0
   playerCounter = 0
+  dealerTotal.innerHTML = ''
   dealerCounter = null
-  dealerTotal.innerText = dealerCounter
   results.remove()
   document.querySelectorAll('.new-card').forEach((element) => {
     element.remove()

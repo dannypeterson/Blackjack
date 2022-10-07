@@ -12,7 +12,7 @@ Let's hit the casino baby
 
 ### **_Description_**
 
-This in-browser game of blackjack was created to provide practice gambling before hitting the casinos on vacation and losing every dollar that you put in.
+This in-browser game of blackjack was created to provide practice gambling before hitting the casinos on vacation and losing every dollar that you put in. It is a classic game of blackjack that does not require any real bets and the player will compete against a computer dealer.
 
 ---
 
@@ -24,37 +24,41 @@ This in-browser game of blackjack was created to provide practice gambling befor
 
 ---
 
+### **_What is Blackjack?_**
+
+#### Blackjack is a card game where the player (you) and the dealer are dealt cards from a randomly shuffled deck. Whoever's total is as close to 21 without going over wins the round. If the total exceeds 21, you lose the round automatically. The player is dealt two cards, where they then have the option to draw another card (hit), or stay with their current total in order to near 21. However, only one of the dealers cards are visible so every move has a risk built in with it. Good luck!
+
 ### **_Getting Started_**
 
-#### Click 'Deal' to draw two cards after placing your bet. The goal is to have cards that add up to as close as 21 without going over. If the dealer is closer to 21 than you are, you lose your hand and the bet you put in. If your cards are closer than the dealer to 21, you win double the bet you put in.
+#### Click 'Start Game' to enter the table. Your cards will be dealt automatically and so will the dealers first card. You then have option buttons to hit, or stay. The dealers second card will then be revealed and they will draw until they reach 16 or more. After the dealer finishes drawing cards, your total is compared with the dealers and a display message will appear with the results. To start a new round, select the "New Round" button.
 
 ---
 
 ### **_Screenshots_**
 
-#### DISCLAIMER: Gambling addiction is very real and very serious and affects the lives of many. I however just have a messed up sense of humor.
+#### The table
 
-![Image](https://starecat.com/content/wp-content/uploads/person-who-keeps-on-gambling-vs-person-who-stopped-gambling-digging-for-diamonds.jpg)
+![Image](https://imgur.com/KicaPxz)
 
-#### Winning!
+#### You win!
 
-![Image](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcache.lovethispic.com%2Fuploaded_images%2F328401-And-Then-I-Said-Hold-Up...that-Aint-No-Hottub.jpg&f=1&nofb=1)
+![Image](https://imgur.com/tada4xy)
 
 ---
 
 ### **_Future Updates_**
 
-- [ ] Future Update 1
-- [x] Future Update 2
-- [x] Completed Update
-- [x] ~~Strikethrough~~ Items Also
+- [ ] Add a delay in between dealer drawing cards
+- [ ] Fake bank account and chips to bet on each round (and likely lose)
+- [ ] Counter to track your wins and losses
+- [ ] Add a "Hint" button to show the preferred play with your cards
 
 ---
 
-### **_Credits (will be updated)_**
+### **_Credits_**
 
-#### The memes: Found on [Twitter](www.twitter.com), copied from [DuckDuckGo](https://duckduckgo.com/?q=and+i+said+hold+up+that+ain%27t+no+hot+tub&va=b&t=hc&iar=images&iax=images&ia=images&iai=https%3A%2F%2Fcache.lovethispic.com%2Fuploaded_images%2F328401-And-Then-I-Said-Hold-Up...that-Aint-No-Hottub.jpg)
+#### Sourcing images [W3schools](https://www.w3schools.com/jsref/prop_img_src.asp)
 
-#### Markdown lessons: [Markdown Cheatsheet](https://www.markdownguide.org/cheat-sheet/)
+#### [MDN SetTimeout()](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout)
 
 ---
