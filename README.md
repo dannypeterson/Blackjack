@@ -57,8 +57,10 @@ This in-browser game of blackjack was created to provide practice gambling befor
 
 ### **_Credits_**
 
+#### [Blackjack Cheatsheet](https://blackjackdoc.com/blackjack-cheatsheet.htm)
+
 #### Sourcing images [W3schools](https://www.w3schools.com/jsref/prop_img_src.asp)
 
-#### [MDN SetTimeout()](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout)
+#### Location.href [W3schools](https://www.w3schools.com/jsref/prop_loc_href.asp)
 
 ---

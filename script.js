@@ -85,6 +85,7 @@ const playerCards = document.querySelector('.player-cards')
 const dealerCards = document.querySelector('.dealer-cards')
 const resultsDisplay = document.querySelector('.results-display')
 const startButton = document.querySelector('.start')
+const homePage = document.querySelector('.home')
 
 //DOM element creations
 let results = document.createElement('header')

@@ -48,3 +48,29 @@ button {
 .rules {
   margin: 0 30px;
 }
+
+.bottom {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: darkgreen;
+color: bisque;
+text-align:center;
+padding: 10px;
+}
+
+footer {
+display: inline;
+margin: 0 40px;
+}
+
+
+.hint, .home {
+  cursor: pointer;
+  border: none;
+  background-color: inherit;
+  font-family: 'Peralta', cursive;
+  color: bisque;
+  margin: 0 20px;
+}
