@@ -48,7 +48,7 @@ This in-browser game of blackjack was created to provide practice gambling befor
 
 ### **_Future Updates_**
 
-- [ ] Add a delay in between dealer drawing cards
+- [ ] Add sound whenever a card is drawn
 - [ ] Fake bank account and chips to bet on each round (and likely lose)
 - [x] Counter to track your wins and losses
 - [x] Add a "Hint" button to show the preferred play with your cards
@@ -61,6 +61,6 @@ This in-browser game of blackjack was created to provide practice gambling befor
 
 #### Sourcing images [W3schools](https://www.w3schools.com/jsref/prop_img_src.asp)
 
-#### Location.href [W3schools](https://www.w3schools.com/jsref/prop_loc_href.asp)
+#### SetIntercal() [MDN](<https://developer.mozilla.org/en-US/docs/Web/API/setInterval#:~:text=The%20setInterval()%20method%2C%20offered,later%20by%20calling%20clearInterval()%20.>)
 
 ---

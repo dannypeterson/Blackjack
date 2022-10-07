@@ -77,7 +77,7 @@ let tieScoreboard = 0
 
 const hitButton = document.querySelector('.hitButton')
 const stayButton = document.querySelector('.stayButton')
-const newRoundButton = document.querySelector('.newRound')
+const newRoundButton = document.querySelector('.roundbtn')
 const playerCardImage1 = document.querySelector('.player-img1')
 const playerCardImage2 = document.querySelector('.player-img2')
 const dealerCardImage1 = document.querySelector('.dealer-img1')
@@ -147,7 +147,7 @@ const revealDealerHand = () => {
           clearInterval(interval)
         }
       }
-      const interval = setInterval(dealerThirdCard, 500)
+      const interval = setInterval(dealerThirdCard, 700)
     }
     displayResults()
   }

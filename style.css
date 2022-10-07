@@ -9,11 +9,12 @@ body {
   flex-wrap: wrap;
   color: antiquewhite;
   margin: 0 20px;
-  width: 100vwß;
+  width: 100vw;
   height: 100vh;
 }
 
-button {
+.inline {
+  display: inline;
   font-family: 'Peralta', cursive;
   color:antiquewhite;
   cursor: pointer;
@@ -25,6 +26,29 @@ button {
   width: 100px;
   margin: 10px;
 }
+
+.roundbtn {
+  display: block;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  background-color: bisque;
+  height: 50px;
+  width: 250px;
+  text-align: center;
+}
+
+.newRound {
+  cursor: pointer;
+  font-family: 'Peralta', cursive;
+  background-color: inherit;
+  border: none;
+  font-size: 16px;
+  color: black;
+  border-radius: 10px;
+  padding-top: 13px
+}
+
 
 .start {
   cursor: pointer;
@@ -97,14 +121,18 @@ a:link, a:visited {
 
 .scoreboard {
   position: fixed;
-  top: 0;
-  right: 15%;
-  display: inline;
-  margin: 20px
+  top: 5%;
+  right: 9%;
+  margin: 10px;
+  background-color: darkgreen;
+  border: solid burlywood 2px;
+  border-radius: 5px;
+  padding-bottom: 20px;
+  padding-left: 10px;
 }
 
 .score {
   display: inline;
-  color: purple;
+  color: lightcoral;
   margin: 0 20px;
 }
