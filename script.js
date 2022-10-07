@@ -69,6 +69,9 @@ let drawCardResult = null
 let isGameLive = true
 let playerAceCount = 0
 let dealerAceCount = 0
+let playerScoreboard = 0
+let dealerScoreboard = 0
+let tieScoreboard = 0
 
 //Query Selectors
 
@@ -86,6 +89,9 @@ const dealerCards = document.querySelector('.dealer-cards')
 const resultsDisplay = document.querySelector('.results-display')
 const startButton = document.querySelector('.start')
 const homePage = document.querySelector('.home')
+const pScore = document.querySelector('.pscore')
+const dScore = document.querySelector('.dscore')
+const tieScore = document.querySelector('.tiescore')
 
 //DOM element creations
 let results = document.createElement('header')
@@ -122,20 +128,30 @@ const countDealerCards = () => {
 
 //Reveals dealers second hand after busting or staying, draws cards until >16
 const revealDealerHand = () => {
-  drawCard(allCards)
-  countDealerCards()
-  dealerTotal.innerText = dealerCounter
-  dealerCardImage2.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
-  while (dealerCounter < 16) {
+  const dealerSecondCard = () => {
     drawCard(allCards)
     countDealerCards()
     dealerTotal.innerText = dealerCounter
-    let newDealerCard = document.createElement('img')
-    newDealerCard.classList.add('new-card')
-    dealerCards.append(newDealerCard)
-    newDealerCard.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
+    dealerCardImage2.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
+
+    if (dealerCounter < 16) {
+      const dealerThirdCard = () => {
+        drawCard(allCards)
+        countDealerCards()
+        let newDealerCard = document.createElement('img')
+        newDealerCard.classList.add('new-card')
+        dealerCards.append(newDealerCard)
+        newDealerCard.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
+        dealerTotal.innerText = dealerCounter
+        if (dealerCounter > 16) {
+          clearInterval(interval)
+        }
+      }
+      const interval = setInterval(dealerThirdCard, 500)
+    }
+    displayResults()
   }
-  displayResults()
+  setTimeout(dealerSecondCard, 300)
 }
 
 //Results function
@@ -144,18 +160,33 @@ const displayResults = () => {
   resultsDisplay.append(results)
   if (playerCounter > 21) {
     results.innerText = 'Busted! You lose this round.'
+    dealerScoreboard++
+    dScore.innerText = dealerScoreboard
   } else if (dealerCounter > 21) {
     results.innerText = 'You win! Dealer busted.'
+    playerScoreboard++
+    pScore.innerText = playerScoreboard
   } else if (playerCounter === dealerCounter) {
     results.innerText = 'Its a tie!'
+    tieScoreboard++
+    console.log(tieScoreboard)
+    tieScore.innerText = tieScoreboard
   } else if (playerCounter === 21) {
     results.innerText = 'Blackjack! You win this round'
+    playerScoreboard++
+    pScore.innerText = playerScoreboard
   } else if (dealerCounter === 21) {
     results.innerText = 'Dealer has Blackjack. You lose this round'
+    dealerScoreboard++
+    dScore.innerText = dealerScoreboard
   } else if (playerCounter > dealerCounter) {
     results.innerText = 'You win!'
+    playerScoreboard++
+    pScore.innerText = playerScoreboard
   } else if (dealerCounter > playerCounter) {
     results.innerText = 'You lose!'
+    dealerScoreboard++
+    dScore.innerText = dealerScoreboard
   }
 }
 
@@ -176,7 +207,7 @@ const hitResponse = () => {
         displayResults()
       }
     }
-    setTimeout(hitCardTimer, 500)
+    setTimeout(hitCardTimer, 200)
   }
 }
 hitButton.addEventListener('click', hitResponse)
@@ -225,8 +256,9 @@ const clearTable = () => {
   playerAceCount = 0
   dealerAceCount = 0
   playerCounter = 0
-  dealerTotal.innerHTML = ''
   dealerCounter = null
+  dealerTotal.innerHTML = ''
+  playerTotal.innerText = ''
   results.remove()
   document.querySelectorAll('.new-card').forEach((element) => {
     element.remove()

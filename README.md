@@ -30,7 +30,7 @@ This in-browser game of blackjack was created to provide practice gambling befor
 
 ### **_Getting Started_**
 
-#### Click 'Start Game' to enter the table. Your cards will be dealt automatically and so will the dealers first card. You then have option buttons to hit, or stay. The dealers second card will then be revealed and they will draw until they reach 16 or more. After the dealer finishes drawing cards, your total is compared with the dealers and a display message will appear with the results. To start a new round, select the "New Round" button.
+#### Click 'Start Game' to enter the table. Upon clicking "New Round," your cards will be dealt automatically and so will the dealers first card. You then have option buttons to hit, or stay. The dealers second card will then be revealed and they will draw until they reach 16 or more. After the dealer finishes drawing cards, your total is compared with the dealers and a display message will appear with the results. To start a new round, select the "New Round" button.
 
 ---
 
@@ -50,8 +50,8 @@ This in-browser game of blackjack was created to provide practice gambling befor
 
 - [ ] Add a delay in between dealer drawing cards
 - [ ] Fake bank account and chips to bet on each round (and likely lose)
-- [ ] Counter to track your wins and losses
-- [ ] Add a "Hint" button to show the preferred play with your cards
+- [x] Counter to track your wins and losses
+- [x] Add a "Hint" button to show the preferred play with your cards
 
 ---
 

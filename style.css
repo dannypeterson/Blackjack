@@ -7,7 +7,7 @@ body {
   justify-content:center;
   align-items: center;
   flex-wrap: wrap;
-  color: aliceblue;
+  color: antiquewhite;
   margin: 0 20px;
   width: 100vwß;
   height: 100vh;
@@ -34,6 +34,7 @@ button {
   font-size: 75px;
   color: red;
   margin: 20px;
+  font-family: 'Peralta', cursive;
 }
 
 .newRound {
@@ -43,6 +44,8 @@ button {
 .picture {
   width: 40vw;
   height: 32vh;
+  border: solid darkgreen 3px;
+  border-radius: 5px;
 }
 
 .rules {
@@ -57,7 +60,7 @@ width: 100%;
 background-color: darkgreen;
 color: bisque;
 text-align:center;
-padding: 10px;
+padding: 5px;
 }
 
 footer {
@@ -72,5 +75,36 @@ margin: 0 40px;
   background-color: inherit;
   font-family: 'Peralta', cursive;
   color: bisque;
+  margin: 0 20px;
+  font-size: large;
+}
+
+a:link, a:visited {
+  background-color: inherit;
+  color: bisque;
+}
+
+.sidenote {
+  padding: 5px;
+  border: solid black 2px;
+  border-radius: 5px;
+}
+
+.r {
+  margin: 5px
+}
+
+
+.scoreboard {
+  position: fixed;
+  top: 0;
+  right: 15%;
+  display: inline;
+  margin: 20px
+}
+
+.score {
+  display: inline;
+  color: purple;
   margin: 0 20px;
 }
