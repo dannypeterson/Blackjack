@@ -38,11 +38,11 @@ This in-browser game of blackjack was created to provide practice gambling befor
 
 #### The table
 
-![Image](https://imgur.com/KicaPxz)
+![Image](https://i.imgur.com/hP0sHrs.png)
 
 #### You win!
 
-![Image](https://imgur.com/tada4xy)
+![Image](https://i.imgur.com/yhLCNbu.png)
 
 ---
 
@@ -57,10 +57,10 @@ This in-browser game of blackjack was created to provide practice gambling befor
 
 ### **_Credits_**
 
-#### [Blackjack Cheatsheet](https://blackjackdoc.com/blackjack-cheatsheet.htm)
+#### [Blackjack Cheatsheet](https://blackjackdoc.com/blackjack-cheatsheet.htm) Used in hint section
 
 #### Sourcing images [W3schools](https://www.w3schools.com/jsref/prop_img_src.asp)
 
-#### SetIntercal() [MDN](<https://developer.mozilla.org/en-US/docs/Web/API/setInterval#:~:text=The%20setInterval()%20method%2C%20offered,later%20by%20calling%20clearInterval()%20.>)
+#### SetInterval() [MDN](<https://developer.mozilla.org/en-US/docs/Web/API/setInterval#:~:text=The%20setInterval()%20method%2C%20offered,later%20by%20calling%20clearInterval()%20.>)
 
 ---

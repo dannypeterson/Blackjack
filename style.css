@@ -120,7 +120,7 @@ a:link, a:visited {
 
 
 .scoreboard {
-  position: fixed;
+  position: absolute;
   top: 5%;
   right: 9%;
   margin: 10px;
