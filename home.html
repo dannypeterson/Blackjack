@@ -7,27 +7,50 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blackjack - Home</title>
-  <link rel="stylesheet" href = "./style.css">
+  <title>Blackjack!</title>
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href = "style.css">
 </head>
 <body>
-  <h1>Lets play Blackjack!</h1>
-  <h2 class="r">Rule:</h2>
-  <div class = "rules">
-    <h3>The goal of the game is to draw (hit) cards until your total is as close to 21 as possible. However, you cannot exceed 21 (bust), or you automatically lose. Once you are comfortable with your card count, the dealer will then draw cards. Whoever is closer to 21 at the end of the round wins!</h3>
-  </div>
-  <div class = 'sidenote'>
-      <li>Face cards count as 10</li>
-      <li>Aces count as 11 or 1</li>
-      <li>Dealer hits until >= 16</li>
+  <div class = "all-cards">
+    <div class ='dealer-cards'>
+        <h2>Dealer's Cards: <span class = 'dealer-total'></span></h2>
+        <img class = 'dealer-img1 card' src = './card-deck/images/backs/blue.svg'>
+        <img class = 'dealer-img2 card' src = './card-deck/images/backs/blue.svg'>
+      </div>
+
+      <div class ='player-cards'> 
+        <h2>Your Cards: <span class = 'player-total'></span></h2>
+        <img class = 'player-img1 card' src = './card-deck/images/backs/red.svg'>
+        <img class = 'player-img2 card' src = './card-deck/images/backs/red.svg'>
+      </div>
   </div>
 
-<div>
-  <input class = "start" type="button" onclick="location.href ='./index.html';" value="Start Game" />
+<div class="scoreboard">
+  <h2>Scoreboard:</h2>
+  <h3 class="score">You: <span class="pscore"></span></h3>
+  <h3 class="score">Dealer: <span class="dscore"></span></h3>
+  <h3 class="score">Tie: <span class="tiescore"></span></h3>
 </div>
 
-  <div>
-    <img class ='picture' src = "https://www.telegraph.co.uk/content/dam/betting/Better-Collective/blackjack-table-dealing.jpg"></img>
+<div>
+  <h2 class="results-display"></h2>
+</div>
+
+  <div class="btn">
+    <button class = 'inline hitButton'>Hit Me</button>
+    <button class = 'inline stayButton'>Stay</button>
   </div>
+  
+  <div class="roundbtn">
+    <button class = 'newRound'>New Round</button>
+  </div>
+
 </body>
+
+<div class="bottom">
+  <a href = "https://blackjackdoc.com/blackjack-cheatsheet.htm" target="_blank">Need a hint?</a>
+  <input class = "home" type="button" onclick="location.href ='./index.html';" value="Home Page" />
+</div>
+
 </html>

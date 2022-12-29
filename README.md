@@ -59,8 +59,4 @@ This in-browser game of blackjack was created to provide practice gambling befor
 
 #### [Blackjack Cheatsheet](https://blackjackdoc.com/blackjack-cheatsheet.htm) Used in hint section
 
-#### Sourcing images [W3schools](https://www.w3schools.com/jsref/prop_img_src.asp)
-
-#### SetInterval() [MDN](<https://developer.mozilla.org/en-US/docs/Web/API/setInterval#:~:text=The%20setInterval()%20method%2C%20offered,later%20by%20calling%20clearInterval()%20.>)
-
 ---

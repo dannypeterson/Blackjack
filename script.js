@@ -167,17 +167,17 @@ const revealDealerHand = () => {
   dealerTotal.innerText = dealerCounter
   dealerCardImage2.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
 
-  if (dealerCounter < 16) {
+  while (dealerCounter < 16) {
     drawCard(allCards)
     countDealerCards()
     let newDealerCard = document.createElement('img')
     newDealerCard.classList.add('new-card')
+    newDealerCard.classList.add('card')
     dealerCards.append(newDealerCard), 500
     newDealerCard.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
     dealerTotal.innerText = dealerCounter
-
-    displayResults()
   }
+  displayResults()
 }
 
 //Hit button event draws random card
@@ -192,6 +192,7 @@ const hitResponse = () => {
       let newPlayerCard = document.createElement('img')
       newPlayerCard.src = `./card-deck/images/${allCards[drawCardResult].cardImage}`
       newPlayerCard.classList.add('new-card')
+      newPlayerCard.classList.add('card')
       playerCards.append(newPlayerCard)
       if (playerCounter >= 21) {
         displayResults()
